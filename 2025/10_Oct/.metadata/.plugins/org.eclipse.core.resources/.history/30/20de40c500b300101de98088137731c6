@@ -1,0 +1,10 @@
+package BOJ_NM5_15654;
+
+// 중복이 없는 순열
+public class Main {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,66 @@
+package BOJ_NM5_15654;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+// 중복이 없는 순열
+public class Main {
+	static int[] list; // 원본 리스트
+	static int[] result; // 결과 리스트
+	static boolean[] visited; // 방문 기록
+	static int R; // 뽑은 개수
+	static int N; // 원본 총 데이터 수
+	public static void main(String[] args) throws FileNotFoundException {
+		File file = new File("./src/BOJ_NM5_15654/input.txt");
+		Scanner sc = new Scanner(file);
+//		Scanner sc = new Scanner(System.in);
+		
+		// #### 데이터 입력 ####
+		N = sc.nextInt(); // 원본 총 데이터 수
+		R = sc.nextInt(); // 뽑은 개수
+		list = new int[N];
+		for (int i = 0; i < N; i++) {
+			list[i] = sc.nextInt();
+		} // 원본 리스트
+		
+		// #### 기본 변수 설정 ####
+		Arrays.sort(list);
+		result = new int[R]; // 결과 리스트
+		visited = new boolean[N]; // 방문 기록
+		
+		// #### permutation 함수 실행 ####
+		permutation(0);
+	} // main
+	
+	// #### 중복이 없는 순열 함수 ####
+	public static void permutation(int idx) {
+		// 1. 탈출 조건
+		if (idx == R) {
+			// 1-1. 결과 원소 출력
+			for (int r : result) {
+				System.out.println(r + " ");
+			}
+			// 1-2. 다음행으로 변경
+			System.out.println();
+			return;
+		}
+		
+		// 2. 모든 원소 탐색
+		for (int i = 0; i < N; i++) {
+			// 2-1. 방문하지 않은 원소일 경우 -> 탐색 시작
+			if (!visited[i]) {
+				//2-1-a. 결과 리스트에 담기
+				result[idx] = list[i];
+				// 2-1-b. 탐색한 걸로 변경
+				visited[i] = true;
+				// 2-1-c. 다음 자리에 올 원소 탐색 (재귀)
+				permutation(idx + 1);
+				// 2-1-d. 원복 (백트래킹)
+				visited[i] = false;
+			}
+		}
+	}
+
+}
