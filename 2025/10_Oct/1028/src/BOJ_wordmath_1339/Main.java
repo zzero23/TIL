@@ -5,13 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 // 중복없는 조합
 public class Main {
-	static List<Character> list = new ArrayList<>(); // 원본 리스트
+	static Set<Character> list = new HashSet<>(); // 원본 리스트
 	static List<char[]> words = new ArrayList<>(); // 단어 사전
 	static Map<Character, Integer> result = new HashMap<>(); // 결과 맵
 	static boolean[] visited; // 방문 리스트
