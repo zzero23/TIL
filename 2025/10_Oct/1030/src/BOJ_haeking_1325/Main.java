@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 
-// dfs
+//bfs
+//==================================
+//10/30 - 시간초과
+//==================================
 public class Main {
 	static List<List<Integer>> graph = new ArrayList<>();
 	static boolean[] visited;
